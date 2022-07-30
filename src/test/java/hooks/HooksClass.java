@@ -14,26 +14,26 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class HooksClass extends StudentBaseClass {
-	Properties prop;
 	
 
-	@Before
-	public void openBrowser1() throws FileNotFoundException, IOException {
+	@Before(order=0,value = "@studentLogin")
+	public void studenturl() {
 		openBrowser();
-		driver.get(propRead().getProperty("student_login_url"));
+		driver.get(prop.getProperty("student_login_url"));
 	}
-	@Before
-	public void openbrowser2() throws FileNotFoundException, IOException {
+	
+	@Before(order=1,value = "@admin")
+	public static void AdminUrl() {
 		openBrowser();
-		driver.get(propRead().getProperty("admin_login_url"));
+		driver.get(prop.getProperty("admin_url"));
 	}
 
-	//@After
-//	public void tearDown() {
-//		driver.close();
+	@After
+	public void tearDown() {
+		driver.close();
 
 	}
-
+}
 
 
 

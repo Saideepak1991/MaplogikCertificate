@@ -17,8 +17,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.baseFactory.StudentBaseClass;
 
-
-
 public class UtilitiesClass extends StudentBaseClass{
 	
 	WebDriver driver;
@@ -34,10 +32,9 @@ public class UtilitiesClass extends StudentBaseClass{
 		return wait.until(ExpectedConditions.textMatches(locator, Pattern.compile("\\d+")));
 	}
 
-	public WebElement waitForElementClickable(By locator) {
+	public WebElement waitForElementClickable(WebElement webelement) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement element = driver.findElement(locator);
-		return wait.until(ExpectedConditions.elementToBeClickable(element));
+		return wait.until(ExpectedConditions.elementToBeClickable(webelement));
 	}
 
 	public void click(By locator) {
@@ -48,16 +45,14 @@ public class UtilitiesClass extends StudentBaseClass{
 		driver.findElement(locator).sendKeys(keyValue);
 	}
 
-	public void uploadFile(By locator, String directory) {
-	driver.findElement(locator).sendKeys(new File(directory).getAbsolutePath());
+	public void uploadFile(WebElement element, String directory) {
+		element.sendKeys(new File(directory).getAbsolutePath());
 	}
-
 	public String getText(By locator) {
 		return driver.findElement(locator).getText();
 	}
 
-	public void selectByText(By locator, String text) {
-		WebElement element = driver.findElement(locator);
+	public void selectByText(WebElement element, String text) {
 		Select select = new Select(element);
 		select.selectByVisibleText(text);
 	}
@@ -69,10 +64,11 @@ public class UtilitiesClass extends StudentBaseClass{
 	public void clear(By locator) {
 		driver.findElement(locator).clear();
 	}
-	public WebElement waitForElementPresent(By locator) {
+
+	public WebElement waitForElementPresent(WebElement webelement) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		//WebElement element = driver.findElement(locator);
-		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		return wait.until(ExpectedConditions.elementToBeClickable(webelement));
 	}
 
 	public void jsClick(String cssSelector) {

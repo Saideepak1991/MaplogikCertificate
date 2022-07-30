@@ -1,27 +1,101 @@
 package com.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class StudentCertificationPageLocator {
+import com.baseFactory.StudentBaseClass;
+import com.utilities.UtilitiesClass;
 
-	public static By coCurricularAchiv = By.xpath("//*[text()='Co Curricular Achievements']");
+public class StudentCertificationPageLocator extends StudentBaseClass{
 	
-	public static By symposium = By.xpath("//*[text()='Symposium']");
+UtilitiesClass util;
 	
-	public static By title = By.name("title");
+	public StudentCertificationPageLocator() {
+		util = new UtilitiesClass(driver);
+		PageFactory.initElements(driver, this);
+	}
 	
-	public static By eventCategory = By.name("category");
+	@FindBy(xpath="//*[text()='Co Curricular Achievements']")
+	public static WebElement cocurricularAchievements;
 	
-	public static By symposiumConductedBy = By.name("conducted_by");
+	@FindBy(xpath="//*[text()='Symposium']")
+	public static WebElement symposium;
 	
-	public static By symposiumDateAndYear = By.name("year");
+	@FindBy(xpath="//*[@id='title']")
+	public static WebElement title;
 	
-	public static By level = By.name("level");
+	@FindBy(xpath="//*[@name='category']")
+	public static WebElement eventcategory;
 	
-	public static By award = By.name("award");
+	@FindBy(xpath="//*[@id='conducted_by']")
+	public static WebElement symposiumconducted;
 	
-	public static By uploadCertificate = By.name("certificate");
+//	@FindBy(xpath="//*[@class='picker__button--today']")
+//	public static WebElement dateandyear;
 	
-	public static By submitButton = By.id("submitbtn");
+	@FindBy(xpath="//*[@name='level']")
+	public static WebElement level;
+	
+	@FindBy(id = "pd-months-year")
+	public static WebElement dateAndYear;
+	
+	@FindBy(xpath="//*[@name='award']")
+	public static WebElement award;
+	
+	@FindBy(id = "certificate")
+	public static WebElement certificate;
+	
+	@FindBy(xpath="//*[@id='submitbtn']")
+	public static WebElement submitbutton;
+	
+	public void cocurriculam() {
+		util.waitForElementPresent(cocurricularAchievements).click();
+	}
+	public void symposium() {
+		util.waitForElementPresent(symposium).click();
+	}	
+	
+	public void puttitle(Integer sampNum) {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Integer num=sampNum;
+		String title1 ="title"+num.toString();
+		title.sendKeys(prop.getProperty(title1));
+	}
+	public void event(Integer sampNum) {
+		Integer num=sampNum;
+		String Eve ="Event"+num.toString();
+		util.selectByText(eventcategory, prop.getProperty(Eve));
+	}
+	public void symposiumconducted(Integer sampNum) {
+		Integer num=sampNum;
+		String contacted ="contactedBy"+num.toString();
+		symposiumconducted.sendKeys(prop.getProperty(contacted));
+	}
+	public void dateandyear() {
+		String selectTodayDateCss = "'button.picker__button--today'";
+		dateAndYear.click();
+		util.jsClick(selectTodayDateCss);
+		//dateandyear.click();	
+	}
+	public void level() {
+		util.selectByText(level, prop.getProperty("level"));
+	}
+	public void award() {
+		util.selectByText(award, prop.getProperty("award"));
+		
+	}
+	public void certificate() {
+		util.uploadFile(certificate,prop.getProperty("certificate"));	
+	}
+	public void submit() {
+		submitbutton.click();
+	}
 	
 }
