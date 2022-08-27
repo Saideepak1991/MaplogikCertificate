@@ -27,6 +27,7 @@ public class HooksClass extends StudentBaseClass {
 		openBrowser();
 		driver.get(prop.getProperty("admin_url"));
 	}
+	
 
 	@After
 	public void tearDown() {

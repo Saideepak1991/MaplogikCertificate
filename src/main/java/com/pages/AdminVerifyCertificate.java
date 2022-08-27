@@ -20,44 +20,44 @@ public class AdminVerifyCertificate extends StudentBaseClass {
 
 	public AdminVerifyCertificate() {
 		util = new UtilitiesClass(driver);
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(driver, this);  //.class
 	}
 
 	@FindBy(xpath = "//*[text()='Co Curricular Achievements']")
-	public static WebElement admincoCurricularAchivement;
+	public WebElement admincoCurricularAchivement;
 
 	@FindBy(xpath = "//*[text()='Symposium']")
-	public static WebElement adminSymposium;
+	public WebElement adminSymposium;
 
 	@FindBy(xpath = "//*[text()='Approved Symposiums']")
-	public static WebElement approval;
+	public WebElement approval;
 
 	@FindBy(xpath = "//*[text()='pending Symposiums']")
-	public static WebElement pending;
+	public WebElement pending;
 
 	@FindBy(xpath = "//*[text()='Decline Symposiums']")
-	public static WebElement decline;
+	public WebElement decline;
 
 	@FindBy(xpath = "//*[@class='form-control form-control-sm']")
-	public static WebElement searchbox;
+	public WebElement searchbox;
 
 	@FindBy(xpath = "//*[@class='odd']/td[3]")
-	public static WebElement fetchtitle;
+	public WebElement fetchtitle;
 
 	@FindBy(xpath = "(//*[@class='item-edit'])[1]")
-	public static WebElement adminAction;
+	public WebElement adminAction;
 
 	@FindBy(xpath = "(//*[@class='btn btn-gradient-success'])[2]")
-	public static WebElement adminAPPorval;
+	public WebElement adminAPPorval;
 
 	@FindBy(xpath = "(//*[@class='btn btn-gradient-success'])[1]")
-	public static WebElement adminDecline;
+	public WebElement adminDecline;
 
 	@FindBy(xpath = "//*[@id='datatable']/tbody/tr/td[3]")
-	public static List<WebElement> CertificateTitles;
+	public List<WebElement> CertificateTitles;
 
 	@FindBy(xpath = "//*[@href='http://maplogik.com/index.php/admin/logout']")
-	public static WebElement adminlogout;
+	public WebElement adminlogout;
 
 	public void admincocurricular() {
 		util.waitForElementClickable(admincoCurricularAchivement).click();
@@ -101,20 +101,20 @@ public class AdminVerifyCertificate extends StudentBaseClass {
 		adminDecline.click();
 	}
 
-	int index = 1;
+	int num = 1;
 
 	public void certificateSearch(String cerficateName) {
 		List<WebElement> allTitles = CertificateTitles;
 		for (int i = 0; i < allTitles.size(); i++) {
-			String certificationDetailPage = "//*[@id='datatable']/tbody/tr[" + index + "]/td[6]/a[1]";
+			String certificationDetailPage = "//*[@id='datatable']/tbody/tr[" + num + "]/td[6]/a[1]";
 			if (allTitles.get(i).getText().equalsIgnoreCase(cerficateName)) {
 				driver.findElement(By.xpath(certificationDetailPage)).click();
 				break;
 			} else {
-				index++;
+				num++;
 			}
 		}
-		index = 1;
+		
 	}
 
 	public List<String> actualCertificateTitle(String certifTitle) {
@@ -125,7 +125,7 @@ public class AdminVerifyCertificate extends StudentBaseClass {
 				actualTitle.add(element.getText());
 				break;
 			} else {
-				index++;
+				num++;
 			}
 		}
 		return actualTitle;
@@ -135,3 +135,29 @@ public class AdminVerifyCertificate extends StudentBaseClass {
 		adminlogout.click();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,37 +18,40 @@ UtilitiesClass util;
 	}
 	
 	@FindBy(xpath="//*[text()='Co Curricular Achievements']")
-	public static WebElement cocurricularAchievements;
+	public WebElement cocurricularAchievements;
 	
 	@FindBy(xpath="//*[text()='Symposium']")
-	public static WebElement symposium;
+	public WebElement symposium;
 	
 	@FindBy(xpath="//*[@id='title']")
-	public static WebElement title;
+	public WebElement title;
 	
 	@FindBy(xpath="//*[@name='category']")
-	public static WebElement eventcategory;
+	public WebElement eventcategory;
 	
 	@FindBy(xpath="//*[@id='conducted_by']")
-	public static WebElement symposiumconducted;
+	public WebElement symposiumconducted;
 	
 //	@FindBy(xpath="//*[@class='picker__button--today']")
 //	public static WebElement dateandyear;
 	
 	@FindBy(xpath="//*[@name='level']")
-	public static WebElement level;
+	public WebElement level;
 	
 	@FindBy(id = "pd-months-year")
-	public static WebElement dateAndYear;
+	public WebElement dateAndYear;
 	
 	@FindBy(xpath="//*[@name='award']")
-	public static WebElement award;
+	public WebElement award;
 	
 	@FindBy(id = "certificate")
-	public static WebElement certificate;
+	public WebElement certificate;
 	
 	@FindBy(xpath="//*[@id='submitbtn']")
-	public static WebElement submitbutton;
+	public WebElement submitbutton;
+	
+	@FindBy(xpath = "//*[text()='Log out']")
+	public WebElement Studentlogout;
 	
 	public void cocurriculam() {
 		util.waitForElementPresent(cocurricularAchievements).click();
@@ -58,19 +61,14 @@ UtilitiesClass util;
 	}	
 	
 	public void puttitle(Integer sampNum) {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		Integer num=sampNum;
 		String title1 ="title"+num.toString();
 		title.sendKeys(prop.getProperty(title1));
 	}
 	public void event(Integer sampNum) {
-		Integer num=sampNum;
-		String Eve ="Event"+num.toString();
+	Integer num=sampNum;
+	String Eve ="Event"+num.toString();  //Event+1= Event1
 		util.selectByText(eventcategory, prop.getProperty(Eve));
 	}
 	public void symposiumconducted(Integer sampNum) {
@@ -98,4 +96,7 @@ UtilitiesClass util;
 		submitbutton.click();
 	}
 	
+	public void StudentLogout() {
+		Studentlogout.click();
+	}
 }

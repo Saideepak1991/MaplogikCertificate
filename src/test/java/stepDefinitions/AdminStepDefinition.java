@@ -42,11 +42,6 @@ public class AdminStepDefinition {
 		adminVerifyCertificate.adminApproval();
 	}
 
-	@Then("click logout button")
-	public void click_logout_button() {
-		adminVerifyCertificate.adminLogout();
-	}
-	
 	@When("select certificate  and click decline button")
 	public void select_certificate_and_click_decline_button() {
 		adminVerifyCertificate.certificateSearch(AdminVerifyCertificate.prop.getProperty("decline"));
@@ -76,7 +71,10 @@ public class AdminStepDefinition {
 		String expected = AdminVerifyCertificate.prop.getProperty("decline");
 		Assert.assertEquals(expected, actualCertificateTitle.get(0));
 	}
-
+	@Then("click logout button")
+	public void click_logout_button() {
+		adminVerifyCertificate.adminLogout();
+	}
 
 	
 }

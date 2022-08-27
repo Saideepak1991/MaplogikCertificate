@@ -20,7 +20,7 @@ import io.cucumber.java.en.Then;
 public class StudentStepDefinition {
 	StudentLoginPageLocators studentloginpagelocators;
 	
-	StudentCertificationPageLocator certfiPage;
+	StudentCertificationPageLocator studentCertificatePageLocator;
 
 	@Given("login student username and password")
 	public void login_student_username_and_password() {
@@ -34,45 +34,44 @@ public class StudentStepDefinition {
 
 	@Given("user click the Co-curriculam field and symposium field")
 	public void user_click_the_co_curriculam_field_and_symposium_field() {
-		certfiPage = new StudentCertificationPageLocator();
-		certfiPage.cocurriculam();
-		certfiPage.symposium();
-
+		studentCertificatePageLocator = new StudentCertificationPageLocator();
+		studentCertificatePageLocator.cocurriculam();
+		studentCertificatePageLocator.symposium();
 	}
 
 	@Then("user fill all the details in the symposiums field and submit")
 	public void user_fill_all_the_details_in_the_symposiums_field_and_submit() {
 		
-			certfiPage.puttitle(1);
-			certfiPage.event(1);
-			certfiPage.symposiumconducted(1);
-			certfiPage.dateandyear();
-			certfiPage.level();
-			certfiPage.award();
-			certfiPage.certificate();
-			certfiPage.submit();
+		studentCertificatePageLocator.puttitle(1);
+		studentCertificatePageLocator.event(1);
+		studentCertificatePageLocator.symposiumconducted(1);
+		studentCertificatePageLocator.dateandyear();
+		studentCertificatePageLocator.level();
+		studentCertificatePageLocator.award();
+		studentCertificatePageLocator.certificate();
+		studentCertificatePageLocator.submit();
 			
-			certfiPage.puttitle(12);
-			certfiPage.event(12);
-			certfiPage.symposiumconducted(12);
-			certfiPage.dateandyear();
-			certfiPage.level();
-			certfiPage.award();
-			certfiPage.certificate();
-			certfiPage.submit();
+		studentCertificatePageLocator.puttitle(12);
+		studentCertificatePageLocator.event(12);
+		studentCertificatePageLocator.symposiumconducted(12);
+		studentCertificatePageLocator.dateandyear();
+		studentCertificatePageLocator.level();
+		studentCertificatePageLocator.award();
+		studentCertificatePageLocator.certificate();
+		studentCertificatePageLocator.submit();
 			
-			certfiPage.puttitle(123);
-			certfiPage.event(123);
-			certfiPage.symposiumconducted(123);
-			certfiPage.dateandyear();
-			certfiPage.level();
-			certfiPage.award();
-			certfiPage.certificate();
-			certfiPage.submit();
+		studentCertificatePageLocator.puttitle(123);
+		studentCertificatePageLocator.event(123);
+		studentCertificatePageLocator.symposiumconducted(123);
+		studentCertificatePageLocator.dateandyear();
+		studentCertificatePageLocator.level();
+		studentCertificatePageLocator.award();
+		studentCertificatePageLocator.certificate();
+		studentCertificatePageLocator.submit();
 	}
 
 	@Then("click the logout button")
 	public void click_the_logout_button() {
-
+		studentCertificatePageLocator.StudentLogout();
 	}
 }

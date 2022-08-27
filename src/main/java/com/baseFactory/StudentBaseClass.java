@@ -14,8 +14,6 @@ public class StudentBaseClass {
 	public static WebDriver driver;
 	public static FileInputStream fis;
 	public static Properties prop;
-	public static WebDriverWait wait;
-	public static Select select;
 
 	public static void openBrowser() {
 		System.setProperty("webdriver.chrome.driver",
@@ -30,5 +28,6 @@ public class StudentBaseClass {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 }

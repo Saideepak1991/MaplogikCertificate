@@ -15,7 +15,7 @@ public class StudentLoginPageLocators extends StudentBaseClass {
 
 	UtilitiesClass util;
 
-	// By Locator
+	
 
 	public StudentLoginPageLocators() {
 		util = new UtilitiesClass(driver);
@@ -23,29 +23,24 @@ public class StudentLoginPageLocators extends StudentBaseClass {
 	}
 	
 	@FindBy(id = "login-student-id")
-	public static WebElement stuId;
+	public WebElement stuId;  //studidtxtbox
 	
 	@FindBy(xpath="//*[@id='login-mobile']")
-	public static WebElement phoneNo;
+	public WebElement phoneNo;
 	
 	@FindBy(xpath="//*[text()='Log in']")
-	public static WebElement loginButton;
+	public WebElement loginButton;
 	
 	@FindBy(xpath="//*[@id='test_otp']")
-	public static WebElement testOtp;
+	public WebElement testOtp;
 	
 	@FindBy(xpath="//*[@id='login-otp']")
-	public static WebElement loginOtpTextBox;
+	public WebElement loginOtpTextBox;
 	
 	@FindBy(xpath="//button[text()='Submit']")
-	public static WebElement submitButton;
+	public WebElement submitButton;
 	
-	//@FindBy(xpath="//*[@href='http://maplogik.com/index.php/student/logout']")
-	
-	
-	//public static WebElement logout;
-	
-	public void stuid() {
+	public void stuid() {  //fillstuidtxtbox
 		stuId.sendKeys(prop.getProperty("student_id"));
 		//System.out.println(stuId);
 	}
